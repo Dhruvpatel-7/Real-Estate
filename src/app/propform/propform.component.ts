@@ -48,8 +48,6 @@ export class PropformComponent {
     for (let i = 0; i < this.images.length; i++) {
       formData.append('images', this.images[i]);
     }
-
-    // Send this formData to your backend using HttpClient
     console.log(formData);
   }
 }

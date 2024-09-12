@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { tokenInterceptor } from './interceptors/token.interceptor';
 import { AdDashboardComponent } from './admin/ad-dashboard/ad-dashboard.component';
+import { PropformComponent } from './propform/propform.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AdDashboardComponent } from './admin/ad-dashboard/ad-dashboard.componen
     GalleryComponent,
     ContactComponent,
     DashboardComponent,
-    AdDashboardComponent
+    AdDashboardComponent,
+    PropformComponent
   ],
   imports: [
     BrowserModule,

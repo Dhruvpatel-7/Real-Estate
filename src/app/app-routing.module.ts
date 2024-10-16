@@ -16,11 +16,11 @@ const routes: Routes = [
   { path:'', component: IndexComponent },
   { path:'register', component: RegisterComponent },
   { path:'login', component: LoginComponent },
-  { path:'prop', component: PropertiesComponent, canActivate:[AuthGuard] },
-  { path:'propdet', component: PropertiesdetailsComponent, canActivate:[AuthGuard] },
-  { path:'gallery', component: GalleryComponent, canActivate:[AuthGuard] },
-  { path:'contact', component: ContactComponent, canActivate:[AuthGuard] },
-  { path:'dashboard', component: DashboardComponent , canActivate:[AuthGuard]},
+  { path:'prop', component: PropertiesComponent},
+  { path:'propdet', component: PropertiesdetailsComponent },
+  { path:'gallery', component: GalleryComponent},
+  { path:'contact', component: ContactComponent},
+  { path:'dashboard', component: DashboardComponent},
   { path:'ad1', component: AdDashboardComponent},
   { path:'propform', component: PropformComponent}
 ];

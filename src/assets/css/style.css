@@ -693,7 +693,7 @@ img {
   margin-bottom: 20px;
 }
 .aa-title p {
-  font-size: 18px;
+  font-size: 20px;
   padding: 0 50px;
 }
 .aa-title span {
@@ -724,7 +724,7 @@ img {
 ====================*/
 
 #aa-latest-property {
-  background-color: #f8f8f8;
+  background-color: #dbd8d8;
   display: inline;
   float: left;
   width: 100%;
@@ -898,7 +898,7 @@ img {
   transition: all 0.5s;
 }
 #aa-service .aa-service-area .aa-service-content .aa-single-service .aa-single-service-content p {
-  font-size: 13px;
+  font-size: 16px;
 }
 
 /*==================
@@ -917,7 +917,7 @@ img {
   position: relative;
 }
 #aa-promo-banner:before {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for better text contrast */
   content: '';
   position: absolute;
   left: 0;
@@ -926,30 +926,32 @@ img {
   bottom: 0;
 }
 #aa-promo-banner .aa-promo-banner-area {
-  z-index: 0;
-  display: inline;
-  float: left;
+  z-index: 1; /* Ensure content is above the overlay */
+  display: inline-block;
   width: 100%;
   padding: 0 150px;
   text-align: center;
+  position: relative; /* Make it relative to position over the overlay */
 }
-#aa-promo-banner .aa-promo-banner-area h3 {
-  color: black;
-  font-size: 40px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-transform: capitalize;
-}
+#aa-promo-banner .aa-promo-banner-area h3,
 #aa-promo-banner .aa-promo-banner-area p {
-  color: black;
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 10px;
+  color: white; /* Change to white for visibility */
+  margin: 0; /* Reset margin for better spacing */
+  padding: 10px; /* Add some padding */
 }
 #aa-promo-banner .aa-promo-banner-area a {
   font-weight: bold;
-  margin-top: 50px;
+  margin-top: 20px;
   text-transform: uppercase;
+  color: white; /* Change link color to white */
+  background-color: #007BFF; /* Button background color */
+  padding: 10px 20px; /* Add padding for the button */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners */
+  display: inline-block; /* Make it block for padding to apply */
+}
+#aa-promo-banner .aa-promo-banner-area a:hover {
+  background-color: #0056b3; /* Darken button on hover */
 }
 
 /*==================
@@ -1069,15 +1071,23 @@ img {
   float: left;
   width: 100%;
 }
+#aa-client-testimonial .aa-title h2 {
+  color: #fff; /* White for visibility */
+  text-align: center; /* Center align the title */
+  font-size: 36px; /* Adjust font size as needed */
+  margin-bottom: 30px; /* Space below the title */
+  position: relative; /* To place elements above */
+  z-index: 1; /* Ensure it is above the overlay */
+}
 #aa-client-testimonial .aa-client-testimonial-area .aa-title p {
   color: #fff;
 }
-#aa-client-testimonial .aa-client-testimonial-area .aa-testimonial-content {
+#aa-client-testimonial .aa-testimonial-content {
   display: inline;
   float: left;
   width: 100%;
 }
-#aa-client-testimonial .aa-client-testimonial-area .aa-testimonial-content .aa-testimonial-slider {
+#aa-client-testimonial .aa-testimonial-content .aa-testimonial-slider {
   display: inline;
   float: left;
   margin-top: 50px;
@@ -1330,6 +1340,7 @@ img {
 
 #aa-property-header {
   background-image: url("../img/property-header-bg.jpg");
+  background-attachment: fixed;
   background-position: center center;
   background-size: cover;
   display: inline;
@@ -1339,6 +1350,7 @@ img {
   width: 100%;
 }
 #aa-property-header::before {
+  background-color: rgba(0, 0, 0, 0.4);
   bottom: 0;
   content: "";
   left: 0;
@@ -3041,7 +3053,7 @@ img {
   }
 
   .aa-title p {
-    font-size: 16px;
+    font-size: 20px;
     padding: 0px;
   }
 

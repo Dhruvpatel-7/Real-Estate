@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { tokenInterceptor } from './interceptors/token.interceptor';
 import { AdDashboardComponent } from './admin/ad-dashboard/ad-dashboard.component';
 import { PropformComponent } from './propform/propform.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PropformComponent } from './propform/propform.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule ,
     HttpClientModule,
   ],
   providers: [{

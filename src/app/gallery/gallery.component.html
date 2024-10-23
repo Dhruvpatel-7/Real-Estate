@@ -8,86 +8,47 @@
     <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
     <!-- END SCROLL TOP BUTTON -->
-
-
-    <!-- Start header section -->
-    <header id="aa-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="aa-header-area">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                <div class="aa-header-left">
-                                    <div class="aa-telephone-no">
-                                        <span class="fa fa-phone"></span>
-                                        1-900-523-3564
-                                    </div>
-                                    <div class="aa-email hidden-xs">
-                                        <span class="fa fa-envelope-o"></span> infomarkups.com
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                <div class="aa-header-right">
-                                    <a href="register.html" class="aa-register">Register</a>
-                                    <a href="signin.html" class="aa-login">Login</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- End header section -->
-    <!-- Start menu section -->
+   
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
+    <!-- END SCROLL TOP BUTTON -->
     <section id="aa-menu-area">
-        <nav class="navbar navbar-default main-navbar" role="navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <div class="navbar-header">
-                    <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- LOGO -->
-                    <!-- Text based logo -->
-                    <a class="navbar-brand aa-logo" href="index.html"> Home <span>Property</span></a>
-                    <!-- Image based logo -->
-                    <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-                        <li><a href="index.html">HOME</a></li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="properties.html">PROPERTIES <span
-                                    class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="properties.html">PROPERTIES</a></li>
-                                <li><a href="properties-detail.html">PROPERTIES DETAIL</a></li>
-                            </ul>
+                <!-- LOGO -->
+                <a class="navbar-brand aa-logo" routerLink="/"> Home <span>Property</span></a>
+    
+                <!-- Toggle Button for Mobile View -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" routerLink="/">HOME</a>
                         </li>
-                        <li class="active"><a href="gallery.html">GALLERY</a></li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">BLOG <span
-                                    class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="blog-archive.html">BLOG</a></li>
-                                <li><a href="blog-single.html">BLOG DETAILS</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/prop">PROPERTIES</a>
                         </li>
-                        <li><a href="contact.html">CONTACT</a></li>
-                        <li><a href="404.html">404 PAGE</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/gallery">GALLERY</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/contact">CONTACT</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                PROFILE
+                            </a>
+                        </li>
                     </ul>
-                </div><!--/.nav-collapse -->
+                </div>
             </div>
         </nav>
     </section>
-    <!-- End menu section -->
 
     <!-- Start Proerty header  -->
 
@@ -97,10 +58,6 @@
                 <div class="col-md-12">
                     <div class="aa-property-header-inner">
                         <h2>Gallery</h2>
-                        <ol class="breadcrumb">
-                            <li><a href="#">HOME</a></li>
-                            <li class="active">Gallery</li>
-                        </ol>
                     </div>
                 </div>
             </div>
@@ -350,36 +307,36 @@
     <!-- Footer -->
     <footer id="aa-footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="aa-footer-area">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="aa-footer-left">
-                                    <p>Designed by <a rel="nofollow" href="http://www.markups.io/">MarkUps.io</a></p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="aa-footer-middle">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#"><i class="fa fa-youtube"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12">
-                                <div class="aa-footer-right">
-                                    <a href="#">Home</a>
-                                    <a href="#">Support</a>
-                                    <a href="#">License</a>
-                                    <a href="#">FAQ</a>
-                                    <a href="#">Privacy & Term</a>
-                                </div>
-                            </div>
-                        </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="aa-footer-area">
+                <div class="row">
+                  <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="aa-footer-left">
+                      <p>Designed by <a rel="nofollow" href="https://github.com/dhruvpatel-7">Dhruv Patel</a></p>
                     </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="aa-footer-middle">
+                      <a href="#"><i class="fa fa-facebook"></i></a>
+                      <a href="#"><i class="fa fa-twitter"></i></a>
+                      <a href="#"><i class="fa fa-google-plus"></i></a>
+                      <a href="#"><i class="fa fa-youtube"></i></a>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div class="aa-footer-right">
+                      <a href="#">Home</a>
+                      <a href="#">Support</a>
+                      <a href="#">License</a>
+                      <a href="#">FAQ</a>
+                      <a href="#">Privacy & Term</a>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </footer>
+      </footer>
 </body>

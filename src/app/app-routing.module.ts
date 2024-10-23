@@ -13,7 +13,7 @@ import { AdDashboardComponent } from './admin/ad-dashboard/ad-dashboard.componen
 import { PropformComponent } from './propform/propform.component';
 
 const routes: Routes = [
-  { path:'', component: IndexComponent },
+  { path:'', component: IndexComponent ,},
   { path:'register', component: RegisterComponent },
   { path:'login', component: LoginComponent },
   { path:'prop', component: PropertiesComponent},

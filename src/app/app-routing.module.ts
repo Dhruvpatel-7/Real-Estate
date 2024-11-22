@@ -9,8 +9,9 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { ContactComponent } from './contact/contact.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
-import { AdDashboardComponent } from './admin/ad-dashboard/ad-dashboard.component';
 import { PropformComponent } from './propform/propform.component';
+import { AdminpanelComponent } from './adminpanel/adminpanel.component';
+import { TermsandconComponent } from './termsandcon/termsandcon.component';
 
 const routes: Routes = [
   { path:'', component: IndexComponent ,},
@@ -21,8 +22,9 @@ const routes: Routes = [
   { path:'gallery', component: GalleryComponent},
   { path:'contact', component: ContactComponent},
   { path:'dashboard', component: DashboardComponent},
-  { path:'ad1', component: AdDashboardComponent},
-  { path:'propform', component: PropformComponent}
+  { path:'ad1', component: AdminpanelComponent},
+  { path:'propform', component: PropformComponent},
+  { path:'t&c', component: TermsandconComponent}
 ];
 
 @NgModule({

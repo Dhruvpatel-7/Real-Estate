@@ -5,16 +5,18 @@ import { UserStoreService } from '../services/user-store.service';
 import Swal from 'sweetalert2';  // Import SweetAlert2
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-adminpanel',
+  templateUrl: './adminpanel.component.html',
+  styleUrl: './adminpanel.component.css'
 })
-export class DashboardComponent implements OnInit {
+
+export class AdminpanelComponent implements OnInit {
 
   public users: any = [];
   public fullName: string = "";
   public role: string = "";
   public user = {
+    id : 0,
     name: '',
     email: '',
     phone: ''

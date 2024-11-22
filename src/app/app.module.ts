@@ -14,9 +14,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { tokenInterceptor } from './interceptors/token.interceptor';
-import { AdDashboardComponent } from './admin/ad-dashboard/ad-dashboard.component';
 import { PropformComponent } from './propform/propform.component';
 import { FormsModule } from '@angular/forms';
+import { AdminpanelComponent } from './adminpanel/adminpanel.component';
+import { TermsandconComponent } from './termsandcon/termsandcon.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +30,10 @@ import { FormsModule } from '@angular/forms';
     GalleryComponent,
     ContactComponent,
     DashboardComponent,
-    AdDashboardComponent,
-    PropformComponent
+    AdminpanelComponent,
+    PropformComponent,
+    AdminpanelComponent,
+    TermsandconComponent
   ],
   imports: [
     BrowserModule,

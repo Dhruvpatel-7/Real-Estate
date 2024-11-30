@@ -1,67 +1,93 @@
-<div class="form-container">
-<form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
-    <!-- Property Name -->
-    <div class="form-group">
-      <label for="propertyName">Property Name</label>
-      <input id="propertyName" type="text" class="form-control" formControlName="propertyName" required />
-    </div>
-  
-    <!-- Property Location -->
-    <div class="form-group">
-      <label for="city">City</label>
-      <select id="city" class="form-control" formControlName="city">
-        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
-      </select>
-    </div>
-  
-    <div class="form-group">
-      <label for="state">State</label>
-      <select id="state" class="form-control" formControlName="state">
-        <option *ngFor="let state of states" [value]="state">{{ state }}</option>
-      </select>
-    </div>
-  
-    <!-- Address -->
-    <div class="form-group">
-      <label for="address">Address</label>
-      <input id="address" type="text" class="form-control" formControlName="address" required />
-    </div>
-  
-    <!-- Property Status -->
-    <div class="form-group">
-      <label for="status">Status</label>
-      <select id="status" class="form-control" formControlName="status">
-        <option value="Available">Available</option>
-        <option value="Sold">Sold</option>
-        <option value="Pending">Pending</option>
-      </select>
-    </div>
-  
-    <!-- Price -->
-    <div class="form-group">
-      <label for="price">Price</label>
-      <input id="price" type="number" class="form-control" formControlName="price" required />
-    </div>
-  
-    <!-- Property Size -->
-    <div class="form-group">
-      <label for="size">Property Size (sq ft)</label>
-      <input id="size" type="number" class="form-control" formControlName="size" required />
-    </div>
-  
-    <!-- Additional Amenities -->
-    <div class="form-group">
-      <label for="amenities">Additional Amenities</label>
-      <textarea id="amenities" class="form-control" formControlName="amenities"></textarea>
-    </div>
-  
-    <!-- Multiple Image Upload -->
-    <div class="form-group">
-      <label for="images">Upload Property Images</label>
-      <input type="file" id="images" (change)="onImageChange($event)" multiple />
-    </div>
-  
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+<div class="container mt-5">
+  <div class="form-container">
+      <h2 class="text-center">Property Listing Form</h2>
+      <form #propertyForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+          <div class="form-group">
+              <label for="propertyName">Property Name</label>
+              <input type="text" class="form-control" id="propertyName" [(ngModel)]="property.Name" name="Name" #name="ngModel" required placeholder="Enter property name">
+              <div class="error" *ngIf="name.invalid && name.touched">Property name is required.</div>
+          </div>
+
+          <div class="form-group">
+              <label for="rooms">Rooms</label>
+              <input type="text" class="form-control" id="rooms" [(ngModel)]="property.PropertyConfiguration" name="PropertyConfiguration" #rooms="ngModel" required placeholder="Enter number of rooms">
+              <div class="error" *ngIf="rooms.invalid && rooms.touched">Number of rooms is required.</div>
+          </div>
+
+          <div class="form-group">
+              <label for="availability">Availability</label>
+              <select class="form-control" id="availability" [(ngModel)]="property.PropertyConfiguration" name="Availability" required>
+                  <option value="">Select Availability</option>
+                  <option value="Sell">Sell</option>
+                  <option value="Rent">Rent</option>
+              </select>
+              <div class="error" *ngIf="!property.PropertyConfiguration && propertyForm.touched">Availability is required.</div>
+          </div>
+
+          <div class="form-group">
+              <label for="price">Price (₹)</label>
+              <input type="number" class="form-control" id="price" [(ngModel)]="property.Price" name="Price" #price="ngModel" required placeholder="Enter price">
+              <div class="error" *ngIf="price.invalid && price.touched">Price is required.</div>
+          </div>
+
+          <div class="form-group">
+              <label for="contactNo">Contact Number</label>
+              <input type="text" class="form-control" id="contactNo" [(ngModel)]="property.ContactNo" name="ContactNo" placeholder="Enter contact number">
+          </div>
+
+          <div class="form-group">
+              <label for="propertySize">Property Size</label>
+              <input type="text" class="form-control" id="propertySize" [(ngModel)]="property.PropertySize" name="PropertySize" placeholder="Enter property size">
+          </div>
+
+          <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" class="form-control" id="state" [(ngModel)]="property.State" name="State" placeholder="Enter state">
+          </div>
+
+          <div class="form-group">
+              <label for="district">District</label>
+              <input type="text" class="form-control" id="district" [(ngModel)]="property.District" name="District" placeholder="Enter district">
+          </div>
+
+          <div class="form-group">
+              <label for="address">Address</label>
+              <textarea class="form-control" id="address" [(ngModel)]="property.Address" name="Address" rows="3" placeholder="Enter address"></textarea>
+          </div>
+
+          <div class="form-group">
+              <label for="aminities">Aminities</label>
+              <textarea class="form-control" id="aminities" [(ngModel)]="property.Aminities" name="Aminities" rows="3" placeholder="Enter aminities"></textarea>
+          </div>
+
+          <div class="form-group">
+              <label for="location">Location (Embed URL)</label>
+              <input type="url" class="form-control" id="location" [(ngModel)]="property.LocationURL" name="Location" required placeholder="Enter URL">
+              <div class="error" *ngIf="!property.LocationURL && propertyForm.touched">Location URL is required.</div>
+          </div>
+
+          <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" id="description" [(ngModel)]="property.Description" name="Description" rows="3" required placeholder="Enter property description"></textarea>
+              <div class="error" *ngIf="!property.Description && propertyForm.touched">Description is required.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="images">Upload Images</label>
+            <input type="file" class="form-control-file" id="images" (change)="onFileChange($event)" multiple accept="image/*" required>
+            <small class="form-text text-muted">You can upload multiple images (max 200KB each).</small>
+        
+            <div class="image-preview">
+                <div *ngFor="let img of imagesPreview; let i = index" class="image-container">
+                    <img [src]="img" alt="Preview" width="100">
+                    <button type="button" class="remove-btn" (click)="removeImage(i)">X</button>
+                </div>
+            </div>
+        
+            <div class="error" *ngIf="imageError">{{ imageError }}</div>
+        </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="!propertyForm.valid">Submit</button>
+      </form>
   </div>
-  
+</div>

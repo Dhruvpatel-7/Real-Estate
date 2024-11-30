@@ -28,11 +28,11 @@ export class AdminpanelComponent implements OnInit {
     this.loadUsers();
     this.userStore.getFullNameFromStore().subscribe(val => {
       const fullNameFromToken = this.auth.getFullNameFromToken();
-      this.fullName = val || fullNameFromToken;
+      this.fullName = val || fullNameFromToken || '';
     });
     this.userStore.getRoleFromStore().subscribe(val => {
       const roleFromToken = this.auth.getRoleFromToken();
-      this.role = val || roleFromToken;
+      this.role = val || roleFromToken || '';
     });
   }
 
@@ -49,7 +49,7 @@ export class AdminpanelComponent implements OnInit {
   }
 
   // Updated deleteCard() method with SweetAlert2
-  deleteCard(userId: number): void {
+  deleteCard(): void {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",

@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { ApiService } from '../services/api.service';
 import { UserStoreService } from '../services/user-store.service';
 import Swal from 'sweetalert2';  // Import SweetAlert2
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,18 +21,21 @@ export class DashboardComponent implements OnInit {
     phone: ''
   };
 
-  constructor(private auth: AuthService, private api: ApiService, private userStore: UserStoreService) {}
+  constructor(private auth: AuthService, private api: ApiService, private userStore: UserStoreService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadUsers();
     this.userStore.getFullNameFromStore().subscribe(val => {
       const fullNameFromToken = this.auth.getFullNameFromToken();
-      this.fullName = val || fullNameFromToken;
+      this.fullName = val || fullNameFromToken || '';
     });
     this.userStore.getRoleFromStore().subscribe(val => {
       const roleFromToken = this.auth.getRoleFromToken();
-      this.role = val || roleFromToken;
+      this.role = val || roleFromToken || '';
     });
+  }
+  navigateToPropertyForm(): void {
+    this.router.navigate(['/propform']);
   }
 
   loadUsers(): void {
@@ -47,7 +51,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // Updated deleteCard() method with SweetAlert2
-  deleteCard(userId: number): void {
+  deleteCard(): void {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",

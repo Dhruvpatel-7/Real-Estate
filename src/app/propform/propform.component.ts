@@ -1,53 +1,125 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { PropertyService } from '../services/property.service';
+import { Properties } from '../models/property.model';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-propform',
   templateUrl: './propform.component.html',
-  styleUrl: './propform.component.css'
+  styleUrls: ['./propform.component.css']
 })
 export class PropformComponent {
-  
-  propertyForm: FormGroup;
+  property: Properties = {
+    Id: 0,
+    Name: '',
+    Price: '',
+    Description: '',
+    ContactNo: '',
+    PropertySize: '',
+    PropertyConfiguration: '',
+    State: '',
+    District: '',
+    Address: '',
+    Aminities: '',
+    LocationURL: '',
+    UserId: 0  // Ensure UserId is part of the property object
+  };
   images: File[] = [];
+  successMessage = '';
+  imagesPreview: string[] = [];
+  imageError: string = '';
 
-  cities = ['New York', 'Los Angeles', 'Chicago', 'Houston'];
-  states = ['New York', 'California', 'Illinois', 'Texas'];
-  
-  constructor(private fb: FormBuilder) {
-    this.propertyForm = this.fb.group({
-      propertyName: [''],
-      city: [''],
-      state: [''],
-      address: [''],
-      status: ['Available'],
-      price: [''],
-      size: [''],
-      amenities: [''],
-    });
-  }
+  constructor(private cdr: ChangeDetectorRef, private propertyService: PropertyService, private router: Router) {}
 
-  onImageChange(event: any) {
+  // Handles file selection
+  onFileChange(event: any): void {
     const files = event.target.files;
-    for (let i = 0; i < files.length; i++) {
-      this.images.push(files[i]);
+    this.imagesPreview = [];  // Clear previously selected images
+    this.imageError = '';  // Clear previous image error message
+
+    if (files.length > 0) {
+      for (let file of files) {
+        // Validate file size (max 200KB)
+        if (file.size > 200 * 1024) {
+          this.imageError = 'Each image must be less than 200KB.';
+          break;
+        }
+
+        // Convert file to base64 string for preview
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.imagesPreview.push(reader.result as string);
+          this.cdr.detectChanges();  // Trigger change detection after adding to the array
+        };
+        reader.readAsDataURL(file);
+      }
     }
   }
 
+  private getUserId(): number {
+    // Replace this logic with how you actually store/retrieve the logged-in user's ID
+    const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    return user ? user.id : null;  // Assume the user object contains the 'id' field
+  }
+
+  // Remove image by index
+  removeImage(index: number): void {
+    this.imagesPreview.splice(index, 1);
+  }
+
+  // Handles form submission
   onSubmit() {
-    const formData = new FormData();
-    formData.append('propertyName', this.propertyForm.get('propertyName')?.value);
-    formData.append('city', this.propertyForm.get('city')?.value);
-    formData.append('state', this.propertyForm.get('state')?.value);
-    formData.append('address', this.propertyForm.get('address')?.value);
-    formData.append('status', this.propertyForm.get('status')?.value);
-    formData.append('price', this.propertyForm.get('price')?.value);
-    formData.append('size', this.propertyForm.get('size')?.value);
-    formData.append('amenities', this.propertyForm.get('amenities')?.value);
-    
-    for (let i = 0; i < this.images.length; i++) {
-      formData.append('images', this.images[i]);
+    const userId = 2;  // Retrieve the user ID
+
+    if (!userId) {
+      Swal.fire({
+        icon: 'error',
+        title: 'User not logged in',
+        text: 'Please log in to add a property.',
+        iconColor: 'black',
+        background: 'yellow',
+        color: 'black',
+        timer: 3000,
+        position: 'top-end',
+        toast: true,
+        showConfirmButton: false
+      });
+      return; // Prevent form submission if user is not logged in
     }
-    console.log(formData);
+
+    // Add the user ID to the property object before submitting
+    this.property.UserId = userId;
+    
+    // Call the property service to submit the form
+    this.propertyService.addProperty(this.property, this.images).subscribe(
+      (response) => {
+        this.successMessage = 'Property added successfully!';
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: this.successMessage,
+          timer: 3000,
+          position: 'top-end',
+          toast: true,
+          showConfirmButton: false
+        });
+        setTimeout(() => {
+          this.router.navigate(['/']); // Redirect after success
+        }, 2000);
+      },
+      (error) => {
+        console.error('There was an error!', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'There was an error while adding the property.',
+          timer: 3000,
+          position: 'top-end',
+          toast: true,
+          showConfirmButton: false
+        });
+      }
+    );
   }
 }
